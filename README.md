@@ -1,2 +1,3 @@
-# ansible-collection-server_baseline
-Ansible Galaxy Collection server_baseline
+# Ansible Collection - barstown.server_baseline
+
+Documentation for the collection.

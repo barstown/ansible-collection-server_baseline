@@ -1,0 +1,6 @@
+{
+  "files.trimFinalNewlines": true,
+  "gitlens.plusFeatures.enabled": false,
+  "gitblame.inlineMessageEnabled": true,
+  "gitblame.inlineMessageFormat": "${author.name} (${time.ago}) ${commit.summary}",
+}
