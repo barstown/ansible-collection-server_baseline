@@ -1,2 +1,2 @@
-# server_config
+# server_baseline
 Ansible Galaxy Collection server_baseline
