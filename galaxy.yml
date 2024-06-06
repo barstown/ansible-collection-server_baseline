@@ -1,0 +1,54 @@
+---
+namespace: barstown
+name: server_baseline
+# Collection versions use Semantic Versioning for version numbers. Please read the official documentation for details and examples. In summary:
+# Increment major (for example: x in x.y.z) version number for an incompatible API change.
+# Increment minor (for example: y in x.y.z) version number for new functionality in a backwards compatible manner.
+# Increment patch (for example: z in x.y.z) version number for backwards compatible bug fixes.
+version: 0.1.0
+readme: README.md
+
+authors:
+- Kyle Barstow <nb623107@gmail.com>
+
+description: Collection of Ansible automations to establish server baseline configurations
+
+license:
+- MIT
+
+tags:
+  - allowed_users
+  - fail2ban
+  - firewall
+  - hostname
+  - motd
+  - network
+  - packages
+  - root_password
+  - ssh
+  - sudoers
+  - time
+  - users
+
+dependencies:
+  community.general: ">=9.0.0"
+  ansible.posix: ">=1.5.4"
+
+repository: https://github.com/barstown/ansible-collection-server_baseline
+documentation: https://github.com/barstown/ansible-collection-server_baseline
+homepage: https://github.com/barstown/ansible-collection-server_baseline
+issues: https://github.com/barstown/ansible-collection-server_baseline/issues
+
+# A list of file glob-like patterns used to filter any files or directories that should not be included in the build
+# artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This
+# uses 'fnmatch' to match the files or directories. Some directories and files like 'galaxy.yml', '*.pyc', '*.retry',
+# and '.git' are always filtered. Mutually exclusive with 'manifest'
+build_ignore:
+  - .ansible-lint
+  - .ansible-lint-ignore
+  - .editorconfig
+  - .galaxy-deploy.yml
+  - .github/
+  - .gitignore
+  - .vale.ini
+  - .vscode/
