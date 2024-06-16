@@ -17,24 +17,25 @@ license:
   - MIT
 
 tags:
+  - access
+  - allowed_users
   - linux
   - security
-  - allowed_users
-  - fail2ban
-  - firewall
-  - hostname
-  - motd
-  - network
-  - packages
-  - root_password
-  - ssh
-  - sudoers
-  - time
-  - users
+  # - fail2ban
+  # - firewall
+  # - hostname
+  # - motd
+  # - network
+  # - packages
+  # - root_password
+  # - ssh
+  # - sudoers
+  # - time
+  # - users
 
-dependencies:
-  community.general: ">=9.0.0"
-  ansible.posix: ">=1.5.4"
+# dependencies:
+#   community.general: ">=9.0.0"
+#   ansible.posix: ">=1.5.4"
 
 repository: https://github.com/barstown/ansible-collection-server_baseline
 documentation: https://github.com/barstown/ansible-collection-server_baseline
