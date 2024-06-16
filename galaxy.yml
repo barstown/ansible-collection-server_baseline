@@ -5,18 +5,20 @@ name: server_baseline
 # Increment major (for example: x in x.y.z) version number for an incompatible API change.
 # Increment minor (for example: y in x.y.z) version number for new functionality in a backwards compatible manner.
 # Increment patch (for example: z in x.y.z) version number for backwards compatible bug fixes.
-version: 0.1.0
+version: 1.0.0
 readme: README.md
 
 authors:
-- Kyle Barstow <nb623107@gmail.com>
+  - Kyle Barstow <nb623107@gmail.com>
 
 description: Collection of Ansible automations to establish server baseline configurations
 
 license:
-- MIT
+  - MIT
 
 tags:
+  - linux
+  - security
   - allowed_users
   - fail2ban
   - firewall

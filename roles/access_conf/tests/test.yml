@@ -1,0 +1,6 @@
+---
+- name: Testing access_conf role
+  hosts: localhost
+  remote_user: root
+  roles:
+    - access_conf

@@ -1,0 +1,7 @@
+---
+# defaults file for access_conf
+access_conf_enabled: true
+access_conf_allow_root: true
+access_conf_default_deny: true
+access_conf_common_entries: []
+access_conf_extra_entries: []
