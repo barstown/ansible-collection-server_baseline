@@ -31,6 +31,6 @@
   loop: "{{ access_conf_common_entries + access_conf_extra_entries }}"
   loop_control:
     loop_var: item
-  with_nested:
-    - "{{ item.origins }}"
+  subelements:
+    - item.origins
 # yamllint enable rule:line-length
