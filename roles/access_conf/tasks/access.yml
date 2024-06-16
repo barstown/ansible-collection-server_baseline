@@ -1,0 +1,12 @@
+---
+- name: access | Validate access values
+  ansible.builtin.include_tasks: assert.yml
+
+- name: access | Deploy /etc/security/access.conf template
+  ansible.builtin.template:
+    src: access.conf.j2
+    dest: /etc/security/access.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true

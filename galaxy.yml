@@ -5,34 +5,37 @@ name: server_baseline
 # Increment major (for example: x in x.y.z) version number for an incompatible API change.
 # Increment minor (for example: y in x.y.z) version number for new functionality in a backwards compatible manner.
 # Increment patch (for example: z in x.y.z) version number for backwards compatible bug fixes.
-version: 0.1.0
+version: 1.0.0
 readme: README.md
 
 authors:
-- Kyle Barstow <nb623107@gmail.com>
+  - Kyle Barstow <nb623107@gmail.com>
 
 description: Collection of Ansible automations to establish server baseline configurations
 
 license:
-- MIT
+  - MIT
 
 tags:
+  - access
   - allowed_users
-  - fail2ban
-  - firewall
-  - hostname
-  - motd
-  - network
-  - packages
-  - root_password
-  - ssh
-  - sudoers
-  - time
-  - users
+  - linux
+  - security
+  # - fail2ban
+  # - firewall
+  # - hostname
+  # - motd
+  # - network
+  # - packages
+  # - root_password
+  # - ssh
+  # - sudoers
+  # - time
+  # - users
 
-dependencies:
-  community.general: ">=9.0.0"
-  ansible.posix: ">=1.5.4"
+# dependencies:
+#   community.general: ">=9.0.0"
+#   ansible.posix: ">=1.5.4"
 
 repository: https://github.com/barstown/ansible-collection-server_baseline
 documentation: https://github.com/barstown/ansible-collection-server_baseline
