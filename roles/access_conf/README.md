@@ -1,5 +1,4 @@
-Access
-======
+# Access
 
 The access role can explicitly grant users or groups access to a server by
 adding content to /etc/security/access.conf to enhance server security posture.
@@ -9,13 +8,11 @@ and denies all others. A common variable defines a access for system
 administrators or service accounts. An extra variable is available to
 define others that can access a server in a group_var or host_var.
 
-Requirements
-------------
+## Requirements
 
 None.
 
-Role variables
---------------
+## Role variables
 
 - `access_conf_enabled`
   - Default: `true`
@@ -48,13 +45,11 @@ Role variables
   - Type: list
   - Required: no
 
-Dependencies
-------------
+## Dependencies
 
 None.
 
-Example playbook
-----------------
+## Example playbook
 
 ```yml
     - hosts: servers
