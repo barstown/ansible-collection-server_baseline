@@ -48,15 +48,9 @@ git commit -s -m 'This is my commit message'
 
 ### Don't reinvent the wheel
 
-This hardening project doesn't intend to reinvent the configuration stack for services. Aim to use official configuration projects first and provide hardening as a layer on top. The goal is remove the need for a user to configure all aspects of services and maintain security configuration. This way, the user can still configure a service using the interface provided by the official project.
+This project doesn't intend to reinvent the configuration stack for services. Aim to use official configuration projects first and provide extra functionality on top.
 
-- For Chef refer to the official [opscode community cookbooks](http://community.opscode.com/cookbooks).
-- For Puppet head to the [Puppet Forge](https://forge.puppetlabs.com/) and take a node of the Puppet supported modules.
 - For Ansible check the [Ansible Module Index](http://docs.ansible.com/list_of_all_modules.html)
-
-These projects are generally hosted on GitHub as well.
-
-In some cases, we in fact create the full rollout stack, but this is generally the exception ([os-hardening](https://github.com/TelekomLabs/chef-os-hardening), [nginx-hardening](https://github.com/TelekomLabs/chef-nginx-hardening)).
 
 ### Be explicit
 
@@ -78,17 +72,10 @@ All tests will be reviewed internally for their validity and overall project dir
 
 As code is more often read than written, please provide documentation in all projects.
 
-Adhere to the respective guidelines for documentation:
-
-- Chef generally documents code based explicit readme files. For code documentation please use [yard-chef](https://github.com/rightscale/yard-chef)
-- [Puppet module documentation](http://docs.puppetlabs.com/puppet/latest/reference/modules_documentation.html)
-
 ### Follow coding styles
 
 We generally include test for coding guidelines:
 
-- Chef follows [Foodcritic](http://acrmp.github.io/foodcritic/)
-- Puppet is checked with [puppet-lint](http://puppet-lint.com/checks/)
 - Ansible is checked by running the playbook with the syntax-check option, for example `ansible-playbook foo.yml --syntax-check`
 
 Remember: Code is generally read much more often than written.
