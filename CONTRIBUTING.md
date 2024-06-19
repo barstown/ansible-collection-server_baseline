@@ -1,4 +1,4 @@
-# Contributor Guideline
+# Contributor guideline
 
 This document provides an overview of how you can participate in improving this project or extending it. We are grateful for all your help: bug reports and fixes, code contributions, documentation or ideas. Feel free to join, we appreciate your support!!
 
@@ -28,10 +28,10 @@ Some great guidelines can be found [here](https://wiki.openstack.org/wiki/GitCom
 
 ## Expectations
 
-## Sign off Your Work
+## Sign off your work
 
 The Developer Certificate of Origin (DCO) is a lightweight way for contributors to certify that they wrote or otherwise have the right to submit the code they are contributing to the project.
-[Here is the full text of the DCO](http://developercertificate.org/).
+[Here is the full text of the DCO](https://developercertificate.org/).
 Contributors must sign-off that they adhere to these requirements by adding a `Signed-off-by` line to commit messages.
 
 ```text

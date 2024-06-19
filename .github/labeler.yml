@@ -1,0 +1,7 @@
+---
+access_conf:
+  - changed-files:
+      - any-glob-to-any-file:
+          - roles/access_conf/**
+          - molecule/access_conf/**
+          - .github/workflows/access_conf.yml

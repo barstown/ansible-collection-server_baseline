@@ -2,7 +2,9 @@
 (?i)Todo
 [Aa]nsible
 Active Directory
+(?i)git
+GitHub
 Jinja
 Kerberos
-Todo Tree
 Markdown
+Todo Tree
