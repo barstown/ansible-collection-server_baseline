@@ -1,5 +1,5 @@
 Access
-=========
+======
 
 The access role can explicitly grant users or groups access to a server by
 adding content to /etc/security/access.conf to enhance server security posture.
@@ -12,9 +12,9 @@ define others that can access a server in a group_var or host_var.
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
-Role Variables
+Role variables
 --------------
 
 - `access_conf_enabled`
@@ -53,7 +53,7 @@ Dependencies
 
 None.
 
-Example Playbook
+Example playbook
 ----------------
 
 ```yml

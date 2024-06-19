@@ -1,0 +1,33 @@
+---
+name: Ansible Lint
+
+on:  # yamllint disable-line rule:truthy
+  # Run CI against all pushes (direct commits, also merged PRs), Pull Requests
+  push:
+    branches: ["main"]
+    paths:
+      - 'roles/**'
+      # - 'molecule/**'
+      # - 'requirements.txt'
+      - '.github/workflows/ansible-lint.yml'
+      - '.ansible-lint'
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ["main"]
+    paths:
+      - 'roles/**'
+      # - 'molecule/**'
+      # - 'requirements.txt'
+      - '.github/workflows/ansible-lint.yml'
+      - '.ansible-lint'
+
+jobs:
+  ansible-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v24

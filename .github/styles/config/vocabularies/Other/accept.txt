@@ -1,3 +1,7 @@
 BUG
 FIXME
 HACK
+bool|ean
+group_var
+host_var
+access_conf
