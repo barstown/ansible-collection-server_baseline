@@ -10,3 +10,7 @@
     group: root
     mode: '0644'
     backup: true
+
+- name: access | Configure PAM
+  ansible.builtin.include_tasks: pam.yml
+  when: access_conf_manage_pam | bool

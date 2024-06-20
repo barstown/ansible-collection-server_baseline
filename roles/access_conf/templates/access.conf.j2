@@ -6,16 +6,16 @@
 +:root:ALL
 {% endif %}
 
-{% if access_conf_common_entries | length > 0 %}
+{% if access_conf_entries_common | length > 0 %}
 # Common rules
-{% for item in access_conf_common_entries %}
+{% for item in access_conf_entries_common %}
 {{ item['permissions'] | default('+') }}:{{ item['name'] }}:{{ ' '.join(item['origins']) }}
 {% endfor %}
 {% endif %}
 
-{% if access_conf_extra_entries | length > 0 %}
+{% if access_conf_entries_extra | length > 0 %}
 # Host-specific rules
-{% for item in access_conf_extra_entries %}
+{% for item in access_conf_entries_extra %}
 {{ item['permissions'] | default('+') }}:{{ item['name'] }}:{{ ' '.join(item['origins']) }}
 {% endfor %}
 {% endif %}

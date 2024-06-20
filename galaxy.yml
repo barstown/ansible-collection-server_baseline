@@ -20,6 +20,7 @@ tags:
   - access
   - allowed_users
   - linux
+  - pam
   - security
   # - fail2ban
   # - firewall
@@ -33,8 +34,8 @@ tags:
   # - time
   # - users
 
-# dependencies:
-#   community.general: ">=9.0.0"
+dependencies:
+  community.general: ">=9.0.0"
 #   ansible.posix: ">=1.5.4"
 
 repository: https://github.com/barstown/ansible-collection-server_baseline

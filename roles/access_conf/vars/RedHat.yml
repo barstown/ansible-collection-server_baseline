@@ -1,0 +1,4 @@
+---
+__access_conf_pam_cron_file: crond
+__access_conf_pam_passwordauth_file: password-auth
+__access_conf_pam_systemauth_file: system-auth

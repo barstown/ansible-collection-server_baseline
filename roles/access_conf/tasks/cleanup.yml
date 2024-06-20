@@ -1,0 +1,63 @@
+---
+- name: cleanup | Deploy /etc/security/access.conf template
+  ansible.builtin.template:
+    src: access.conf.j2
+    dest: /etc/security/access.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: true
+  vars:
+    access_conf_allow_root: false
+    access_conf_default_deny: false
+    access_conf_entries_common: []
+    access_conf_entries_extra: []
+
+# Old method, keeping temporarily for reference.
+# Remove pam_access.so from /etc/pam.d files since this isn't a default
+# when manage_pam is true
+# - name: cleanup | Cleanup pam settings when manage_pam is true
+#   when: access_conf_manage_pam | bool
+#   block:
+#     - name: cleanup | Ensure pam_access.so in login
+#       community.general.pamd:
+#         name: login
+#         type: account
+#         control: required
+#         module_path: pam_access.so
+#         state: absent
+
+#     - name: cleanup | Ensure pam_access.so in sshd
+#       community.general.pamd:
+#         name: sshd
+#         type: account
+#         control: required
+#         module_path: pam_access.so
+#         state: absent
+
+#     - name: cleanup | Ensure pam_access.so in {{ __access_conf_pam_cron_file }}
+#       community.general.pamd:
+#         name: "{{ __access_conf_pam_cron_file }}"
+#         type: account
+#         control: required
+#         module_path: pam_access.so
+#         state: absent
+#       when: __access_conf_pam_cron_file is defined
+
+#     - name: cleanup | Ensure pam_access.so in {{ __access_conf_pam_passwordauth_file }}
+#       community.general.pamd:
+#         name: "{{ __access_conf_pam_passwordauth_file }}"
+#         type: account
+#         control: required
+#         module_path: pam_access.so
+#         state: absent
+#       when: __access_conf_pam_passwordauth_file is defined
+
+#     - name: cleanup | Ensure pam_access.so in {{ __access_conf_pam_systemauth_file }}
+#       community.general.pamd:
+#         name: "{{ __access_conf_pam_systemauth_file }}"
+#         type: account
+#         control: required
+#         module_path: pam_access.so
+#         state: absent
+#       when: __access_conf_pam_systemauth_file is defined
