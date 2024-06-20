@@ -20,6 +20,14 @@ None.
     doesn't clear the access.conf file.
   - Type: bool
   - Required: yes
+- `access_conf_manage_pam`
+  - Default: `false`
+  - Description: Used to enable or disable the pam_access.so module. Disabled
+    by default because faulty PAM configuration can lock you out of your
+    system. Make backups and test in lower environments thoroughly before
+    enabling in production!
+  - Type: bool
+  - Required: yes
 - `access_conf_allow_root`
   - Default: `true`
   - Description: Permit root from all origins.

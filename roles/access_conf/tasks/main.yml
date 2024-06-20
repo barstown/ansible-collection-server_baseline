@@ -1,5 +1,12 @@
 ---
 # tasks file for access_conf
+- name: Set platform/version specific variables
+  ansible.builtin.include_tasks: set_vars.yml
+
 - name: Include access tasks
   ansible.builtin.include_tasks: access.yml
   when: access_conf_enabled | bool
+
+- name: Include cleanup tasks
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not access_conf_enabled | bool

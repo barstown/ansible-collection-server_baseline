@@ -1,0 +1,86 @@
+---
+- name: pam | RedHat family authselect block
+  when: ansible_facts['os_family'] == "RedHat"
+  block:
+    - name: pam | Get current authselect profile
+      ansible.builtin.command:
+        cmd: authselect current
+      register: authselect_current_output
+      changed_when: false
+
+    - name: pam | Check if current authselect profile is valid
+      ansible.builtin.debug:
+        msg: "{{ authselect_current_output.stdout }}"
+      failed_when: >
+        not authselect_current_output.stdout | search('Profile ID: minimal|Profile ID: sssd|Profile ID: winbind')
+
+    - name: pam | Enable authselect feature with-pamaccess
+      ansible.builtin.command:
+        cmd: authselect enable-feature with-pamaccess
+      when: "'with-pamaccess' not in authselect_current_output.stdout"
+      changed_when: "'with-pamaccess' not in authselect_current_output.stdout"
+
+  rescue:
+    - name: pam | Fail if authselect current profile is invalid
+      ansible.builtin.fail:
+        msg: "No valid authselect profile found. Please ensure the profile is set to minimal, sssd, or winbind."
+
+- name: pam | Add pam_access.so to common-account on Debian family
+  community.general.pamd:
+    name: common-account
+    type: account
+    control: "[success=1 new_authtok_reqd=done default=ignore]"
+    module_path: pam_unix.so
+    new_type: account
+    new_control: required
+    new_module_path: pam_access.so
+    state: before
+  when: ansible_facts['os_family'] == "Debian"
+
+# Old method, keeping temporarily for reference.
+# - name: pam | Ensure pam_access.so in login
+#   community.general.pamd:
+#     name: login
+#     type: account
+#     control: include
+#     module_path: system-auth
+#     new_type: account
+#     new_control: required
+#     new_module_path: pam_access.so
+#     state: after
+
+# - name: pam | Ensure pam_access.so in sshd
+#   community.general.pamd:
+#     name: sshd
+#     type: auth
+#     control: include
+#     module_path: postlogin
+#     new_type: account
+#     new_control: required
+#     new_module_path: pam_access.so
+#     state: after
+
+# # Enabled by default on RHEL family
+# - name: pam | Ensure pam_access.so in {{ __access_conf_pam_cron_file }}
+#   community.general.pamd:
+#     name: "{{ __access_conf_pam_cron_file }}"
+#     type: account
+#     control: required
+#     module_path: pam_access.so
+#   when: __access_conf_pam_cron_file is defined
+
+# - name: pam | Ensure pam_access.so in {{ __access_conf_pam_passwordauth_file }}
+#   community.general.pamd:
+#     name: "{{ __access_conf_pam_passwordauth_file }}"
+#     type: account
+#     control: required
+#     module_path: pam_access.so
+#   when: __access_conf_pam_passwordauth_file is defined
+
+# - name: pam | Ensure pam_access.so in {{ __access_conf_pam_systemauth_file }}
+#   community.general.pamd:
+#     name: "{{ __access_conf_pam_systemauth_file }}"
+#     type: account
+#     control: required
+#     module_path: pam_access.so
+#   when: __access_conf_pam_systemauth_file is defined
