@@ -12,7 +12,9 @@
       ansible.builtin.debug:
         msg: "{{ authselect_current_output.stdout }}"
       failed_when: >
-        not authselect_current_output.stdout | search('Profile ID: minimal|Profile ID: sssd|Profile ID: winbind')
+        ("Profile ID: minimal" not in authselect_current_output.stdout) and
+        ("Profile ID: sssd" not in authselect_current_output.stdout) and
+        ("Profile ID: winbind" not in authselect_current_output.stdout)
 
     - name: pam | Enable authselect feature with-pamaccess
       ansible.builtin.command:
