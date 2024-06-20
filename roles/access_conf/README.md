@@ -38,7 +38,7 @@ None.
   - Description: Deny all others from all origins.
   - Type: bool
   - Required: yes
-- `access_conf_common_entries`
+- `access_conf_entries_common`
   - Default: ``
   - Description: List of dictionaries used to define access for all managed
     endpoints, intended for system administrators and service accounts. Accepts
@@ -46,7 +46,7 @@ None.
     more details.
   - Type: list
   - Required: no
-- `access_conf_extra_entries`
+- `access_conf_entries_extra`
   - Default: ``
   - Description: List of dictionaries used to define access for group or host
     vars.
@@ -65,7 +65,7 @@ None.
         access_conf_enabled: true
         access_conf_allow_root: true
         access_conf_default_deny: true
-        access_conf_common_entries:
+        access_conf_entries_common:
           - name: 'admins'
             origins:
               - ALL
