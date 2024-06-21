@@ -35,8 +35,7 @@ tags:
   # - users
 
 dependencies:
-  community.general: ">=9.0.0"
-#   ansible.posix: ">=1.5.4"
+  community.general: ">=2.0.0"
 
 repository: https://github.com/barstown/ansible-collection-server_baseline
 documentation: https://github.com/barstown/ansible-collection-server_baseline

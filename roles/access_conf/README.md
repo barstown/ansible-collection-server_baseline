@@ -12,6 +12,8 @@ define others that can access a server in a group_var or host_var.
 
 None.
 
+<!-- BEGIN_ANSIBLE_DOCS -->
+
 ## Role variables
 
 - `access_conf_enabled`
@@ -74,3 +76,13 @@ None.
       roles:
          - barstown.server_baseline.access
 ```
+
+## License
+
+MIT
+
+## Author Information
+
+- [Kyle Barstow](https://github.com/barstown)
+
+<!-- END_ANSIBLE_DOCS -->
