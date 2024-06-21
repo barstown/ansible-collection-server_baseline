@@ -1,7 +1,7 @@
 ---
 argument_specs:
   main:
-    short_description: The main entrypoint for the access_conf role
+    short_description: The main entrypoint for the access_conf role v7
     author:
       - Kyle Barstow
     options:
@@ -55,14 +55,16 @@ argument_specs:
       access_conf_enabled:
         type: bool
         default: true
-        description: Used to enable or disable this entire role.
+        description: |
+          Used to enable or disable this entire role.
+          The access task deployes a template file that controls users or groups that are able to SSH to a server. Each of the three variables below do the same thing, but exist so that you may define different options globally (common), in a group var, or in a host var. The task will render the template on the server with a section dedicated to each variable. These should be defined as a list of dictionaries.
         required: true
       access_conf_manage_pam:
         type: bool
         default: false
         description: |
           Description: Used to enable or disable the pam_access.so module.
-          Disabled by default because faulty PAM configuration can lock you out
+          `Disabled by default because faulty PAM` configuration can lock you out
           of your system. Make backups and test in lower environments
           thoroughly before enabling in production!
         required: true
