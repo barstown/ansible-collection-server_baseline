@@ -5,3 +5,7 @@ access_conf:
           - roles/access_conf/**
           - molecule/access_conf/**
           - .github/workflows/access_conf.yml
+actions:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/*.yml

@@ -3,9 +3,12 @@
 ignore_files:
   - .aar_doc*
   - .ansible-lint*
+  - .ansible.cfg
   - .editorconfig
   - .github/**
   - .vscode/**
+  - ansible.cfg
+  - collections/**
 
 rules:
   # Default rule set
