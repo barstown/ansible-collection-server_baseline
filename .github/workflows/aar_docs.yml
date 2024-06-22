@@ -2,6 +2,7 @@
 name: Automated Ansible Role Documentation
 
 on:
+  workflow_dispatch:
   push:
     branches: ["main"]
     paths:
