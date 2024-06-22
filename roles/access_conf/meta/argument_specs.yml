@@ -5,6 +5,30 @@ argument_specs:
     author:
       - Kyle Barstow
     options:
+      access_conf_enabled:
+        type: bool
+        default: true
+        description: Used to enable or disable this entire role.
+        required: true
+      access_conf_manage_pam:
+        type: bool
+        default: false
+        description: |
+          Used to enable or disable the pam_access.so module.
+          Disabled by default because faulty PAM configuration can lock you out
+          of your system. Make backups and test in lower environments
+          thoroughly before enabling in production!
+        required: true
+      access_conf_allow_root:
+        type: bool
+        default: true
+        description: Permit root from all origins.
+        required: true
+      access_conf_default_deny:
+        type: bool
+        default: true
+        description: Deny all others from all origins.
+        required: true
       access_conf_entry_common:
         description: List of common access control entries
         type: list
@@ -49,32 +73,3 @@ argument_specs:
               - '-'
             default: '+'
             required: false
-  bool:
-    short_description: The bool entry point for the access_conf role.
-    options:
-      access_conf_enabled:
-        type: bool
-        default: true
-        description: |
-          Used to enable or disable this entire role.
-          The access task deployes a template file that controls users or groups that are able to SSH to a server. Each of the three variables below do the same thing, but exist so that you may define different options globally (common), in a group var, or in a host var. The task will render the template on the server with a section dedicated to each variable. These should be defined as a list of dictionaries.
-        required: true
-      access_conf_manage_pam:
-        type: bool
-        default: false
-        description: |
-          Description: Used to enable or disable the pam_access.so module.
-          `Disabled by default because faulty PAM` configuration can lock you out
-          of your system. Make backups and test in lower environments
-          thoroughly before enabling in production!
-        required: true
-      access_conf_allow_root:
-        type: bool
-        default: true
-        description: Permit root from all origins.
-        required: true
-      access_conf_default_deny:
-        type: bool
-        default: true
-        description: Deny all others from all origins.
-        required: true

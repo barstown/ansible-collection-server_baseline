@@ -1,3 +1,5 @@
+<!-- BEGIN_ANSIBLE_DOCS -->
+
 # Access
 
 The access role can explicitly grant users or groups access to a server by
@@ -11,8 +13,6 @@ define others that can access a server in a group_var or host_var.
 ## Requirements
 
 None.
-
-<!-- BEGIN_ANSIBLE_DOCS -->
 
 ## Role variables
 
