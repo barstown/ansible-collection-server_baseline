@@ -16,6 +16,8 @@ on:
 jobs:
   aar_docs:
     name: create roles readme
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
