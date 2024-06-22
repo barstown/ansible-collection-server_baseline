@@ -47,6 +47,7 @@ issues: https://github.com/barstown/ansible-collection-server_baseline/issues
 # uses 'fnmatch' to match the files or directories. Some directories and files like 'galaxy.yml', '*.pyc', '*.retry',
 # and '.git' are always filtered. Mutually exclusive with 'manifest'
 build_ignore:
+  - .aar_doc*
   - .ansible-lint
   - .ansible-lint-ignore
   - .editorconfig
@@ -55,3 +56,4 @@ build_ignore:
   - .gitignore
   - .vale.ini
   - .vscode/
+  - .woke.yml
