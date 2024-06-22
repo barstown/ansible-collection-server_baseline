@@ -1,0 +1,75 @@
+---
+argument_specs:
+  main:
+    short_description: The main entrypoint for the access_conf role v7
+    author:
+      - Kyle Barstow
+    options:
+      access_conf_enabled:
+        type: bool
+        default: true
+        description: Used to enable or disable this entire role.
+        required: true
+      access_conf_manage_pam:
+        type: bool
+        default: false
+        description: |
+          Used to enable or disable the pam_access.so module.
+          Disabled by default because faulty PAM configuration can lock you out
+          of your system. Make backups and test in lower environments
+          thoroughly before enabling in production!
+        required: true
+      access_conf_allow_root:
+        type: bool
+        default: true
+        description: Permit root from all origins.
+        required: true
+      access_conf_default_deny:
+        type: bool
+        default: true
+        description: Deny all others from all origins.
+        required: true
+      access_conf_entry_common:
+        description: List of common access control entries
+        type: list
+        elements: dict
+        options:
+          name:
+            description: Name of the access entry, likely a user or group
+            type: str
+            required: true
+          origins:
+            description: List of origins
+            type: list
+            elements: str
+            required: true
+          permission:
+            description: "Permission type"
+            type: str
+            choices:
+              - '+'
+              - '-'
+            default: '+'
+            required: false
+      access_conf_entry_extra:
+        description: List of extra access control entries
+        type: list
+        elements: dict
+        options:
+          name:
+            description: Name of the access entry, likely a user or group
+            type: str
+            required: true
+          origins:
+            description: List of origins
+            type: list
+            elements: str
+            required: true
+          permission:
+            description: "Permission type"
+            type: str
+            choices:
+              - '+'
+              - '-'
+            default: '+'
+            required: false

@@ -1,3 +1,5 @@
+<!-- BEGIN_ANSIBLE_DOCS -->
+
 # Access
 
 The access role can explicitly grant users or groups access to a server by
@@ -74,3 +76,13 @@ None.
       roles:
          - barstown.server_baseline.access
 ```
+
+## License
+
+MIT
+
+## Author Information
+
+- [Kyle Barstow](https://github.com/barstown)
+
+<!-- END_ANSIBLE_DOCS -->
