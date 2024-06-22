@@ -2,12 +2,11 @@
 name: Automated Ansible Role Documentation
 
 on:
-  # Leaving this here for potential, likely will block pushes to main.
-  # push:
-  #   branches: ["main"]
-  #   paths:
-  #     - 'roles/**/meta/argument_specs.yml'
-  #     - 'roles/**/meta/main.yml'
+  push:
+    branches: ["main"]
+    paths:
+      - 'roles/**/meta/argument_specs.yml'
+      - 'roles/**/meta/main.yml'
   pull_request:
     branches: ["main"]
     paths:
