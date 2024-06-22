@@ -3,22 +3,26 @@ name: Ansible Lint
 
 on:
   # Leaving this here for potential, likely will block pushes to main.
-  # push:
-  #   branches: [main]
-  #   paths:
-  #     - 'roles/**'
-  #     # - 'molecule/**'
-  #     # - 'requirements.txt'
-  #     - '.github/workflows/ansible-lint.yml'
-  #     - '.ansible-lint'
-  pull_request:
+  push:
     branches: [main]
     paths:
+      - '.ansible-lint'
+      - '.github/workflows/ansible-lint.yml'
+      - 'galaxy-deploy.yml'
+      - 'galaxy.yml'
       - 'roles/**'
       # - 'molecule/**'
       # - 'requirements.txt'
-      - '.github/workflows/ansible-lint.yml'
+  pull_request:
+    branches: [main]
+    paths:
       - '.ansible-lint'
+      - '.github/workflows/ansible-lint.yml'
+      - 'galaxy-deploy.yml'
+      - 'galaxy.yml'
+      - 'roles/**'
+      # - 'molecule/**'
+      # - 'requirements.txt'
 
 jobs:
   ansible-lint:
