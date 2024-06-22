@@ -1,88 +1,91 @@
-<!-- BEGIN_ANSIBLE_DOCS -->
+# Ansible Role: barstown.server_baseline.access_conf
+Version: 1.0.0
 
-# Access
+Access is used to deploy the /etc/security/access.conf file which is used
+to control who can access the endpoint and from which origins.
 
-The access role can explicitly grant users or groups access to a server by
-adding content to /etc/security/access.conf to enhance server security posture.
 
-Two default, but optional, variables ensures that the root user retains access
-and denies all others. A common variable defines a access for system
-administrators or service accounts. An extra variable is available to
-define others that can access a server in a group_var or host_var.
+Tags: access, security, pam
+
 
 ## Requirements
 
-None.
+| Platform | Versions |
+| -------- | -------- |
+| EL | 8, 9 |
+| Debian | bookworm |
 
-## Role variables
 
-- `access_conf_enabled`
-  - Default: `true`
-  - Description: Used to enable or disable this entire role. Disabling the role
-    doesn't clear the access.conf file.
-  - Type: bool
-  - Required: yes
-- `access_conf_manage_pam`
-  - Default: `false`
-  - Description: Used to enable or disable the pam_access.so module. Disabled
-    by default because faulty PAM configuration can lock you out of your
-    system. Make backups and test in lower environments thoroughly before
-    enabling in production!
-  - Type: bool
-  - Required: yes
-- `access_conf_allow_root`
-  - Default: `true`
-  - Description: Permit root from all origins.
-  - Type: bool
-  - Required: yes
-- `access_conf_default_deny`
-  - Default: `true`
-  - Description: Deny all others from all origins.
-  - Type: bool
-  - Required: yes
-- `access_conf_entries_common`
-  - Default: ``
-  - Description: List of dictionaries used to define access for all managed
-    endpoints, intended for system administrators and service accounts. Accepts
-    name for the list item, origins, and permissions. See `man access.conf` for
-    more details.
-  - Type: list
-  - Required: no
-- `access_conf_entries_extra`
-  - Default: ``
-  - Description: List of dictionaries used to define access for group or host
-    vars.
-  - Type: list
-  - Required: no
+## Role Variables
+
+### Entrypoint: main
+---
+The main entrypoint for the access_conf role v7
+
+|Option|Description|Type|Required|Default|
+|---|---|---|---|---|
+| access_conf_enabled | Used to enable or disable this entire role. | bool | yes | true |
+| access_conf_manage_pam | Used to enable or disable the pam_access.so module. Disabled by default because faulty PAM configuration can lock you out of your system. Make backups and test in lower environments thoroughly before enabling in production! | bool | yes | false |
+| access_conf_allow_root | Permit root from all origins. | bool | yes | true |
+| access_conf_default_deny | Deny all others from all origins. | bool | yes | true |
+| access_conf_entry_common | List of common access control entries | list of dicts of 'access_conf_entry_common' options | no |  |
+| access_conf_entry_extra | List of extra access control entries | list of dicts of 'access_conf_entry_extra' options | no |  |
+
+#### Options for main > access_conf_entry_common
+---
+|Option|Description|Type|Required|Default|
+|---|---|---|---|---|
+| name | Name of the access entry, likely a user or group | str | yes |  |
+| origins | List of origins | list of 'str' | yes |  |
+| permission | Permission type | str | no | + |
+
+#### Options for main > access_conf_entry_extra
+---
+|Option|Description|Type|Required|Default|
+|---|---|---|---|---|
+| name | Name of the access entry, likely a user or group | str | yes |  |
+| origins | List of origins | list of 'str' | yes |  |
+| permission | Permission type | str | no | + |
+
+#### Choices for main > access_conf_entry_common > permission
+---
+|Choice|
+|---|
+| + |
+| - |
+
+#### Choices for main > access_conf_entry_extra > permission
+---
+|Choice|
+|---|
+| + |
+| - |
+
 
 ## Dependencies
-
 None.
 
-## Example playbook
+
+## Example Playbook
 
 ```yml
-    - hosts: servers
+- hosts: all
+  tasks:
+    - name: Importing role: barstown.server_baseline.access_conf
+      ansible.builtin.import_role:
+        name: barstown.server_baseline.access_conf
       vars:
-        access_conf_enabled: true
-        access_conf_allow_root: true
-        access_conf_default_deny: true
-        access_conf_entries_common:
-          - name: 'admins'
-            origins:
-              - ALL
-            permissions: '+' # optional, defaults to `+`
-
-      roles:
-         - barstown.server_baseline.access
+        access_conf_enabled: # required, type: bool
+        access_conf_manage_pam: # required, type: bool
+        access_conf_allow_root: # required, type: bool
+        access_conf_default_deny: # required, type: bool
 ```
+
 
 ## License
 
 MIT
 
+
 ## Author Information
-
-- [Kyle Barstow](https://github.com/barstown)
-
-<!-- END_ANSIBLE_DOCS -->
+Kyle Barstow
