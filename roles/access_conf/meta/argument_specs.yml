@@ -16,8 +16,10 @@ argument_specs:
         description: |
           Used to enable or disable the pam_access.so module.
           Disabled by default because faulty PAM configuration can lock you out
-          of your system. Make backups and test in lower environments
-          thoroughly before enabling in production!
+          of your system. Review role tasks and test thoroughly before enabling
+          in a production environment.
+
+          When OS family is RedHat, you must first set an `authselect` profile.
         required: true
       access_conf_allow_root:
         type: bool

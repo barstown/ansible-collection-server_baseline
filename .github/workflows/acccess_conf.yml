@@ -1,0 +1,61 @@
+---
+name: Molecule - access_conf
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - '.github/workflows/access_conf.yml'
+  #     - 'molecule/access_conf/**'
+  #     - 'roles/access_conf/**'
+  #     # - 'requirements.txt'
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - '.github/workflows/access_conf.yml'
+  #     - 'molecule/access_conf/**'
+  #     - 'roles/access_conf/**'
+  #     # - 'requirements.txt'
+
+jobs:
+  ansible-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v24
+  molecule:
+    runs-on: ubuntu-latest
+    needs:
+      - ansible-lint
+    strategy:
+      matrix:
+        image:
+          - name: debian
+            tag: bookworm
+          - name: debian
+            tag: bullseye
+          - name: fedora
+            tag: '40'
+          - name: rockylinux
+            tag: '8'
+          - name: rockylinux
+            tag: '9'
+          # - alpine
+          # - amazonlinux
+          # - opensuse
+          # - ubuntu
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          path: ${{ github.repository }}
+      - name: Run molecule test
+        uses: robertdebock/molecule-action@6.0.1
+        with:
+          image: ${{ matrix.image.image }}
+          tag: ${{ matrix.image.tag }}
+          options: parallel
+          scenario: access_conf
