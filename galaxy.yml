@@ -33,7 +33,6 @@ tags:
   # - sudoers
   # - time
   # - users
-  # - just_a_comment
 
 dependencies:
   community.general: ">=2.0.0"
