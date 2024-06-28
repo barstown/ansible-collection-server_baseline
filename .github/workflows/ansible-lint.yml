@@ -30,5 +30,13 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      # This runs twice, once to install the collections and roles, because
+      # the current action is unable to resolve FQCN for modules on first pass
+      - name: Install required collections and roles
+        uses: ansible/ansible-lint@v24
+        with:
+          args: "galaxy.yml -v"
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v24
+        with:
+          args: "-v"
