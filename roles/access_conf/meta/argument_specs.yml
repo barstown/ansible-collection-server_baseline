@@ -9,7 +9,7 @@ argument_specs:
         type: bool
         default: true
         description: Used to enable or disable this entire role.
-        required: true
+        required: false
       access_conf_manage_pam:
         type: bool
         default: false
@@ -18,17 +18,17 @@ argument_specs:
           Disabled by default because faulty PAM configuration can lock you out
           of your system. Make backups and test in lower environments
           thoroughly before enabling in production!
-        required: true
+        required: false
       access_conf_allow_root:
         type: bool
         default: true
         description: Permit root from all origins.
-        required: true
+        required: false
       access_conf_default_deny:
         type: bool
         default: true
         description: Deny all others from all origins.
-        required: true
+        required: false
       access_conf_entry_common:
         description: List of common access control entries
         type: list
