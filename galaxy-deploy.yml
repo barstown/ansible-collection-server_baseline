@@ -19,7 +19,7 @@
   gather_facts: false
 
   vars:
-    namespace: barstown
+    galaxy_namespace: barstown
     collection: server_baseline
     # Requires github_tag to be set when calling playbook.
     release_tag: "{{ github_tag.split('/')[-1] }}"
@@ -56,5 +56,5 @@
 
     - name: Publish the collection.
       ansible.builtin.command: >
-        ansible-galaxy collection publish ./{{ namespace }}-{{ collection }}-{{ release_tag }}.tar.gz
+        ansible-galaxy collection publish ./{{ galaxy_namespace }}-{{ collection }}-{{ release_tag }}.tar.gz
       changed_when: true
