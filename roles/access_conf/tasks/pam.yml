@@ -5,22 +5,22 @@
     - name: pam | Get current authselect profile
       ansible.builtin.command:
         cmd: authselect current
-      register: authselect_current_output
+      register: access_conf_authselect_current_output
       changed_when: false
 
     - name: pam | Check if current authselect profile is valid
       ansible.builtin.debug:
-        msg: "{{ authselect_current_output.stdout }}"
+        msg: "{{ access_conf_authselect_current_output.stdout }}"
       failed_when: >
-        ("Profile ID: minimal" not in authselect_current_output.stdout) and
-        ("Profile ID: sssd" not in authselect_current_output.stdout) and
-        ("Profile ID: winbind" not in authselect_current_output.stdout)
+        ("Profile ID: minimal" not in access_conf_authselect_current_output.stdout) and
+        ("Profile ID: sssd" not in access_conf_authselect_current_output.stdout) and
+        ("Profile ID: winbind" not in access_conf_authselect_current_output.stdout)
 
     - name: pam | Enable authselect feature with-pamaccess
       ansible.builtin.command:
         cmd: authselect enable-feature with-pamaccess
-      when: "'with-pamaccess' not in authselect_current_output.stdout"
-      changed_when: "'with-pamaccess' not in authselect_current_output.stdout"
+      when: "'with-pamaccess' not in access_conf_authselect_current_output.stdout"
+      changed_when: "'with-pamaccess' not in access_conf_authselect_current_output.stdout"
 
   rescue:
     - name: pam | Fail if authselect current profile is invalid
