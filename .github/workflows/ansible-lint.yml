@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       # This runs twice, once to install the collections and roles, because
       # the current action is unable to resolve FQCN for modules on first pass
       - name: Install required collections and roles
