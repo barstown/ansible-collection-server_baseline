@@ -26,9 +26,9 @@ jobs:
           - access_conf
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: 3.14
       - name: Install aar_doc
@@ -39,7 +39,7 @@ jobs:
         run: git diff roles/${{ matrix.roles }}/README.md
       - name: Push README
         if: github.event_name != 'pull_request'
-        uses: github-actions-x/commit@v2.9
+        uses: github-actions-x/commit@722d56b8968bf00ced78407bbe2ead81062d8baa # v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'Update ${{ matrix.roles }} README'
