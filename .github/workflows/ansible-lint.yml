@@ -33,10 +33,10 @@ jobs:
       # This runs twice, once to install the collections and roles, because
       # the current action is unable to resolve FQCN for modules on first pass
       - name: Install required collections and roles
-        uses: ansible/ansible-lint@8ba9595a4acd1b906eb75568b34f6ef592cd1528 # v26
+        uses: ansible/ansible-lint@5fac056c45595896c973fbde871f01f6cb14d74c # v26
         with:
           args: "galaxy.yml -v"
       - name: Run ansible-lint
-        uses: ansible/ansible-lint@8ba9595a4acd1b906eb75568b34f6ef592cd1528 # v26
+        uses: ansible/ansible-lint@5fac056c45595896c973fbde871f01f6cb14d74c # v26
         with:
           args: "-v"
